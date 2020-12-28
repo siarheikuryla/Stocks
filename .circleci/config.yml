@@ -5,12 +5,10 @@ orbs:
   docker: circleci/docker@1.5.0
 
 workflows:
-  maven_test:
-    jobs:
-      - maven/test # checkout, build, test, and upload test results
   maven_build:
     jobs:
-      - maven/build
+      - maven/test # checkout, build, test, and upload test results
+
   docker_image_build:
     jobs:
       - docker/publish:
