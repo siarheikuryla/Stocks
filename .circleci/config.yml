@@ -14,4 +14,3 @@ workflows:
       - docker/publish:
           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           update-description: true
-          registry: hub.docker.com
