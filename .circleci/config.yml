@@ -15,5 +15,3 @@ workflows:
           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           update-description: true
           use-docker-credentials-store: true
-          username: siarheikuryla  # can specify string literal values
-          password: $DOCKERHUB_PASSWORD  # or project environment variable referenc
