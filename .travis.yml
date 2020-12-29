@@ -18,7 +18,7 @@ script:
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker tag back $DOCKER_USERNAME/stocks:$TRAVIS_BUILD_NUMBER
+  - docker tag stocks $DOCKER_USERNAME/stocks:$TRAVIS_BUILD_NUMBER
   - docker push $DOCKER_USERNAME/stocks:$TRAVIS_BUILD_NUMBER
-  - docker tag back $DOCKER_USERNAME/stocks:latest
+  - docker tag stocks $DOCKER_USERNAME/stocks:latest
   - docker push $DOCKER_USERNAME/stocks:latest
