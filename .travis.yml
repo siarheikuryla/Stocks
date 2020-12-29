@@ -17,7 +17,7 @@ script:
   - docker build -t stocks .
 
 after_success:
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
   - docker tag back $DOCKER_USER/stocks:$TRAVIS_BUILD_NUMBER
   - docker push $DOCKER_USER/stocks:$TRAVIS_BUILD_NUMBER
   - docker tag back $DOCKER_USER/stocks:latest
