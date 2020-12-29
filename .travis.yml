@@ -12,12 +12,13 @@ env:
 before_install:
   - chmod +x ./mvnw
 
-script: mvn clean verify
+script:
+  - mvn clean verify
+  - docker build -t stocks .
 
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - export TAG=latest
-  - export IMAGE_NAME=siarheikuryla/stocks
-  - docker build -t $IMAGE_NAME:$COMMIT .
-  - docker tag $IMAGE_NAME:$COMMIT $IMAGE_NAME:$TAG
-  - docker push $IMAGE_NAME
+  - docker tag back $DOCKER_USER/stocks:$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_USER/stocks:$TRAVIS_BUILD_NUMBER
+  - docker tag back $DOCKER_USER/stocks:latest
+  - docker push $DOCKER_USER/stocks:latest
